@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索无限可能 | 创造数字奇迹</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #6c5ce7;
+            --background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-color: #2d3436;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background-image: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 头部样式 */
+        .header {
+            text-align: center;
+            padding: 3rem 0 4rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -50px;
+        }
+
+        .header h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* 搜索框 */
+        .search-box {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 5px 30px rgba(74, 144, 226, 0.2);
+            border-radius: 35px;
+            background: var(--card-bg);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            border-radius: 35px;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        .search-btn {
+            padding: 0 30px;
+            border: none;
+            border-radius: 35px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        /* 网站分类 */
+        .category {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .site-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(250, 250, 250, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: var(--text-color);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .site-item:hover {
+            transform: translateY(-3px);
+            background: rgba(74, 144, 226, 0.08);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.1);
+        }
+
+        .site-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* 天气模块 */
+        .weather-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        }
+
+        /* 待办事项 */
+        .todo-container {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        }
+
+        .todo-input {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .todo-list {
+            list-style: none;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem !important;
+            }
+            .header h1 span:nth-child(2) {
+                display: none;
+            }
+            .header h1 span {
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 style="font-size: 2.3rem; margin-bottom: 1rem; line-height: 1.4;">
+                <span style="color: #ffd700;">探索无限可能</span>
+                <span style="margin: 0 15px; color: rgba(255,255,255,0.7)">|</span>
+                <span style="color: #00ff88;">创造数字奇迹</span>
+            </h1>
+            <div class="search-box">
+                <form class="search-form" action="https://www.bing.com/search" target="_blank">
+                    <input type="text" name="q" class="search-input" placeholder="必应搜索...">
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 常用网站 -->
+        <div class="category">
+            <h2><i class="fas fa-rocket"></i> 效率工具</h2>
+            <div class="grid">
+                <a href="https://www.bing.com" class="site-item" target="_blank">
+                    <img src="https://www.bing.com/favicon.ico" class="site-icon" alt="Bing">
+                    必应搜索
+                </a>
+                <a href="https://www.office.com" class="site-item" target="_blank">
+                    <img src="https://static2.sharepointonline.com/files/fabric/assets/item-types/96/office.svg" class="site-icon" alt="Office">
+                    Office 365
+                </a>
+                <a href="https://github.com" class="site-item" target="_blank">
+                    <img src="https://github.githubassets.com/favicons/favicon.png" class="site-icon" alt="GitHub">
+                    GitHub
+                </a>
+                <a href="https://figma.com" class="site-item" target="_blank">
+                    <img src="https://static.figma.com/app/icon/1/favicon.png" class="site-icon" alt="Figma">
+                    Figma
+                </a>
+            </div>
+        </div>
+
+        <!-- 天气模块 -->
+        <div class="weather-card">
+            <h3><i class="fas fa-cloud-sun"></i> 天气信息</h3>
+            <div id="weather-info">正在获取天气数据...</div>
+        </div>
+
+        <!-- 待办事项 -->
+        <div class="todo-container">
+            <h3><i class="fas fa-tasks"></i> 任务管理</h3>
+            <input type="text" class="todo-input" placeholder="输入任务后按回车">
+            <ul class="todo-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        // 待办事项功能
+        const todoInput = document.querySelector('.todo-input');
+        const todoList = document.querySelector('.todo-list');
+
+        function addTodo(text) {
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+            li.innerHTML = `
+                ${text}
+                <button class="delete-btn"><i class="fas fa-trash"></i></button>
+            `;
+            li.querySelector('.delete-btn').addEventListener('click', () => {
+                li.remove();
+            });
+            todoList.appendChild(li);
+        }
+
+        todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && todoInput.value.trim()) {
+                addTodo(todoInput.value.trim());
+                todoInput.value = '';
+            }
+        });
+
+        // 天气功能（需替换API Key）
+        async function getWeather() {
+            try {
+                const response = await fetch(
+                    'https://api.openweathermap.org/data/2.5/weather?q=Beijing&units=metric&appid=YOUR_API_KEY'
+                );
+                const data = await response.json();
+                document.getElementById('weather-info').innerHTML = `
+                    <p>📍 城市：${data.name}</p>
+                    <p>🌡️ 温度：${data.main.temp}℃</p>
+                    <p>🌤️ 天气：${data.weather[0].description}</p>
+                `;
+            } catch (error) {
+                console.error('天气获取失败:', error);
+                document.getElementById('weather-info').innerHTML = "天气服务暂不可用";
+            }
+        }
+
+        getWeather();
+
+        // 主题切换功能
+        const themes = {
+            light: {
+                '--primary-color': '#4a90e2',
+                '--secondary-color': '#6c5ce7',
+                '--background': 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
+                '--card-bg': 'rgba(255, 255, 255, 0.95)',
+                '--text-color': '#2d3436'
+            },
+            dark: {
+                '--primary-color': '#BB86FC',
+                '--secondary-color': '#3700B3',
+                '--background': 'linear-gradient(135deg, #121212 0%, #1E1E1E 100%)',
+                '--card-bg': 'rgba(30, 30, 30, 0.95)',
+                '--text-color': '#ffffff'
+            }
+        };
+
+        function setTheme(themeName) {
+            const theme = themes[themeName];
+            Object.keys(theme).forEach(key => {
+                document.documentElement.style.setProperty(key, theme[key]);
+            });
+        }
+    </script>
+</body>
+</html>
